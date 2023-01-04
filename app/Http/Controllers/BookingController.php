@@ -20,7 +20,7 @@ class BookingController extends Controller
             'barber_id' => 'required|exists:barbers,id',
             'date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
+            'duration' => 'required|integer|default:60',
             'notes' => 'nullable|string',
         ]);
 

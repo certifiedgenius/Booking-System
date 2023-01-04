@@ -9,7 +9,14 @@ class Barber extends Model
 {
     use HasFactory;
     
+    protected $table = 'barbers';
+
     protected $fillable = [
-        'name', 'phone',
+        'first_name', 'last_name', 'email', 'password',
     ];
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }
