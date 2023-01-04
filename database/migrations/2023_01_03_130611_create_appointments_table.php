@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_id');
-            $table->integer('barber_id');
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('barber_id');
             $table->date('date');
             $table->time('start_time');
             $table->integer('duration')->default(60);
