@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Customer;
-use App\Barber;
-use App\Appointment;
+use App\Models\Barber;
+use App\Models\Customer;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
