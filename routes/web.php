@@ -33,5 +33,5 @@ require __DIR__.'/auth.php';
 
 // To get the Appointments route in AdminDashboard
 Route::get('/admin/appointments', function () {
-    return view('components.admin.appointments');
+    return view('admin/appointments/index');
 });
