@@ -1,6 +1,6 @@
 <div>
     <!-- Nothing worth having comes easy. - Theodore Roosevelt -->
-    <table>
+<table>
   <thead>
     <tr>
       <th>Customer Name</th>
@@ -26,4 +26,3 @@
 </table>
 
 </div>
-

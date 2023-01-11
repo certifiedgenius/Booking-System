@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AppointmentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,4 @@ require __DIR__.'/auth.php';
 
 
 // To get the Appointments route in AdminDashboard
-Route::get('/admin/appointments', function () {
-    return view('admin/appointments/index');
-});
+Route::get('/admin/appointments', [AppointmentController::class, 'index']);
