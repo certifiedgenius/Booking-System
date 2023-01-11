@@ -3,7 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\BarberController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +38,6 @@ require __DIR__.'/auth.php';
 
 // To get the Appointments route in AdminDashboard
 Route::get('/admin/appointments', [AppointmentController::class, 'index']);
+
+// To get the Customers route in AdminDashboard
+Route::get('/admin/customers', [CustomerController::class, 'index']);
