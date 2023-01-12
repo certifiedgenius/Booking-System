@@ -30,6 +30,7 @@
                                         <td>{{ $customer->phone_number }}</td>
                                         <td>
                                             <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-primary btn-sm">View</a>
+                                            <a href="{{ route('customers.show', $customer->id) }}">{{ $customer->name }}</a>
                                             <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                             <form style="display:inline-block" action="{{ route('customers.destroy', $customer->id) }}" method="post">
                                                 @csrf

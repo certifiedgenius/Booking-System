@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Barber;
 use App\Models\Customer;
 use App\Models\Appointment;
@@ -38,7 +37,9 @@ class AppointmentController extends Controller
             'barber_first_name' => 'required|string|max:255',
             'barber_last_name' => 'required|string|max:255',
             'barber_email' => 'required|email|max:255',
-            'barber_password' => 'required|string|min:6',
+            'barber_password' => 'required|string|min:6|confirmed',
+            'barber_password_confirmation' => 'required|string|min:6',
+            'barber_id' => 'required|integer',
             'date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
             'duration' => 'required|integer|default:60',
@@ -79,6 +80,7 @@ class AppointmentController extends Controller
             'status' => 'success',
             'appointment' => $appointment,
         ], 201);
+        return view('appointments.create');
     }
 
     /**

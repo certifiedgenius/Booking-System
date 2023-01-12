@@ -8,6 +8,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BarberController;
 use App\Http\Controllers\CustomerController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,3 +42,7 @@ Route::get('/admin/appointments', [AppointmentController::class, 'index']);
 
 // To get the Customers route in AdminDashboard
 Route::get('/admin/customers', [CustomerController::class, 'index']);
+
+
+// To get the Appointments to create in user interface
+Route::get('/user/appointments', [AppointmentController::class, 'create']);
