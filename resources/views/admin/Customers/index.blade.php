@@ -1,8 +1,11 @@
 <!-- resources/views/customers/index.blade.php -->
 
-@extends('layouts.app')
+<x-app-layout>
+    
+    <x-slot:header>
+        All Customers
+    </x-slot>
 
-@section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -31,7 +34,7 @@
                                         <td>
                                             <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-primary btn-sm">View</a>
                                             <a href="{{ route('customers.show', $customer->id) }}">{{ $customer->name }}</a>
-                                            <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="{{ route('customers.update', $customer->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                             <form style="display:inline-block" action="{{ route('customers.destroy', $customer->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
@@ -47,4 +50,5 @@
             </div>
         </div>
     </div>
-@endsection
+
+</x-app-layout>

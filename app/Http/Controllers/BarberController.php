@@ -50,6 +50,8 @@ class BarberController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        
+        $validator['password'] = bcrypt($validator['password']);
 
         Barber::create([
             'first_name' => $request->input('first_name'),

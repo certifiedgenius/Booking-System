@@ -37,12 +37,20 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
+
+// ADMIN
 // To get the Appointments route in AdminDashboard
-Route::get('/admin/appointments', [AppointmentController::class, 'index']);
+Route::get('/admin/appointments', [AppointmentController::class, 'index'])->name('appointments');
 
 // To get the Customers route in AdminDashboard
 Route::get('/admin/customers', [CustomerController::class, 'index']);
+Route::get('/admin/customers/{id}', [CustomerController::class, 'show'])->name('customers.show');
+Route::post('/admin/customers/edit/{id}', [CustomerController::class, 'update'])->name('customers.update');
+Route::post('/admin/customers/delete/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
 
+
+// USER
 // To get the Appointments to create in user interface
 Route::get('/user/appointments', [AppointmentController::class, 'create']);
+Route::post('/user/appointments', [AppointmentController::class, 'store'])->name('appointments.store');

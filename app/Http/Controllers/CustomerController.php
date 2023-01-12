@@ -13,7 +13,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        return view('admin.customers.index', ['customers' => Customer::all()]);
+        return view('admin.customers.index', ['customers' => $customers]);
 
         return response()->json([
             'status' => 'success',

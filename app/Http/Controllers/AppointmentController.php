@@ -23,11 +23,11 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage. 
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'customer_first_name' => 'required|string|max:255',
@@ -80,18 +80,20 @@ class AppointmentController extends Controller
             'status' => 'success',
             'appointment' => $appointment,
         ], 201);
-        return view('appointments.create');
+        
+        
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
         //
+        return view('user.appointments.create');
     }
  
     
