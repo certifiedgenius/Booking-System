@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
+
 class AppointmentController extends Controller
 {
     //
@@ -34,6 +35,9 @@ class AppointmentController extends Controller
     // validate, sanitize, and store the data entered by the user into the database. to handle requests to store a new resource. 
     public function store(Request $request)
     {
+        
+    
+    
         $validator = Validator::make($request->all(), [
             'customer_first_name' => 'required|string|max:255',
             'customer_last_name' => 'required|string|max:255',
@@ -70,7 +74,7 @@ class AppointmentController extends Controller
             'last_name' => $request->input('barber_last_name'),
             'email' => $request->input('barber_email'),
             'password' => Hash::make($request->input('barber_password')),
-        ]);
+        ]);  
 
         $appointment = Appointment::create([
             'customer_id' => $customer->id,
@@ -80,12 +84,19 @@ class AppointmentController extends Controller
             'duration' => $request->input('duration'),
             'text' => $request->input('text'),
         ]);
+        
+        // Save the appointment to the database
+        $appointment->save();
+        
+        // Redirect the user to a success page
+        return redirect('/user/appointments/create');
 
+        /*
         return response()->json([
             'status' => 'success',
             'appointment' => $appointment,
         ], 201);
-        
+        */
         
     }
 
@@ -100,8 +111,8 @@ class AppointmentController extends Controller
     // display a form for creating a new resource. 
     public function create(Request $request)
     {
-        //
-        return view('user.appointments.create');
+        $barbers = Barber::all();
+        return view('user.appointments.create', compact('barbers'));
     }
  
     // retrieve and display the details of a specific resource, such as displaying the details of a specific customer.
