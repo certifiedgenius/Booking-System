@@ -17,16 +17,21 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    // retrieve and display data from the application's database.
     public function index()
     {
         return view('admin.appointments.index', ['appointments' => Appointment::with(['customer', 'barber'])->get()]);
     }
 
+    
     /**
      * Store a newly created resource in storage. 
      *
      * @return \Illuminate\Http\Response
      */
+    
+    // validate, sanitize, and store the data entered by the user into the database. to handle requests to store a new resource. 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -84,19 +89,22 @@ class AppointmentController extends Controller
         
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
+    // display a form for creating a new resource. 
     public function create(Request $request)
     {
         //
         return view('user.appointments.create');
     }
  
-    
+    // retrieve and display the details of a specific resource, such as displaying the details of a specific customer.
     public function show($id)
     {
         $appointment = Appointment::find($id);
@@ -114,7 +122,7 @@ class AppointmentController extends Controller
         ], 200);
     }
     
-    
+    // validate, sanitize, and update the data entered by the user into the database for a specific resource.
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
@@ -135,6 +143,7 @@ class AppointmentController extends Controller
             ], 422);
         }
 
+        
         $appointment = Appointment::findOrFail($id);
 
         if ($request->has('customer_name')) {
@@ -169,8 +178,10 @@ class AppointmentController extends Controller
             $appointment->notes = $request->input('notes');
         }
 
+        
         $appointment->save();
 
+        
         return response()->json([
             'status' => 'success',
             'appointment' => $appointment,
