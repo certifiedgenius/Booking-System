@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
-    //
     
+    // retrieve and display data from the application's database.
     public function index()
     {
         $customers = Customer::all();
@@ -21,6 +21,7 @@ class CustomerController extends Controller
         ], 200);
     }
 
+    // retrieve and display the details of a specific resource, such as displaying the details of a specific customer.
     public function show(Customer $customer)
     {
         return response()->json([
@@ -29,6 +30,7 @@ class CustomerController extends Controller
         ], 200);
     }
 
+    // validate, sanitize, and store the data entered by the user into the database. to handle requests to store a new resource.
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -58,6 +60,7 @@ class CustomerController extends Controller
         ], 201);
     }
 
+    // validate, sanitize, and update the data entered by the user into the database for a specific resource.
     public function update(Request $request, Customer $customer)
     {
         $validator = Validator::make($request->all(), [
@@ -87,6 +90,7 @@ class CustomerController extends Controller
         ], 200);
     }
 
+    // delete a specific resource from the database.
     public function destroy(Customer $customer)
     {
         $customer->delete();
