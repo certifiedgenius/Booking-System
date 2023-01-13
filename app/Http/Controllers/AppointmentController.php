@@ -35,23 +35,15 @@ class AppointmentController extends Controller
     // validate, sanitize, and store the data entered by the user into the database. to handle requests to store a new resource. 
     public function store(Request $request)
     {
-        
-    
-    
         $validator = Validator::make($request->all(), [
             'customer_first_name' => 'required|string|max:255',
             'customer_last_name' => 'required|string|max:255',
             'customer_email' => 'required|email|max:255',
             'customer_phone' => 'required|string|max:255',
-            'barber_first_name' => 'required|string|max:255',
-            'barber_last_name' => 'required|string|max:255',
-            'barber_email' => 'required|email|max:255',
-            'barber_password' => 'required|string|min:6|confirmed',
-            'barber_password_confirmation' => 'required|string|min:6',
-            'barber_id' => 'required|integer',
+            'barber_id' => 'required|integer', // barber name
             'date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
-            'duration' => 'required|integer|default:60',
+            'duration' => '|integer|default:60',
             'text' => 'nullable|string',
         ]);
 
@@ -69,19 +61,13 @@ class AppointmentController extends Controller
             'phone' => $request->input('customer_phone'),
         ]);
         
-        $barber = Barber::create([
-            'first_name' => $request->input('barber_first_name'),
-            'last_name' => $request->input('barber_last_name'),
-            'email' => $request->input('barber_email'),
-            'password' => Hash::make($request->input('barber_password')),
-        ]);  
 
         $appointment = Appointment::create([
             'customer_id' => $customer->id,
             'barber_id' => $request->input('barber_id'),
             'date' => $request->input('date'),
             'start_time' => $request->input('start_time'),
-            'duration' => $request->input('duration'),
+            'duration' => 60,
             'text' => $request->input('text'),
         ]);
         
@@ -89,14 +75,14 @@ class AppointmentController extends Controller
         $appointment->save();
         
         // Redirect the user to a success page
-        return redirect('/user/appointments/create');
+        return redirect('/user/appointments');
 
-        /*
+        
         return response()->json([
             'status' => 'success',
             'appointment' => $appointment,
         ], 201);
-        */
+        
         
     }
 

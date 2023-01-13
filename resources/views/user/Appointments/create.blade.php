@@ -121,23 +121,24 @@
         </p>
     @enderror
     </div>
+    
     <div class="mb-4">
-        <label class="block font-medium text-gray-700 mb-2" for="duration">
-            Appointment Duration
+        <label class="block font-medium text-gray-700 mb-2" for="text">
+            Appointment Description
         </label>
-    <input 
-         class="form-input @error('duration') border-red-500 @enderror" 
-         type="text" 
-         id="duration" 
-         name="duration" 
-         value="{{ old('duration') }}"
-         required
-        >
-    @error('duration')
+            <textarea class="form-input @error('text') border-red-500 @enderror" 
+                id="text" 
+                name="text" 
+                value="{{ old('text') }}"
+                rows="5"
+                >
+            </textarea>
+    @error('text')
         <p class="text-red-500 text-xs italic mt-4">
             {{ $message }}
         </p>
     @enderror
     </div>
+
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Create Appointment</button>
 </form>

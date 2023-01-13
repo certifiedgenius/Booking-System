@@ -53,4 +53,4 @@ Route::post('/admin/customers/delete/{id}', [CustomerController::class, 'destroy
 // USER
 // To get the Appointments to create in user interface
 Route::get('/user/appointments', [AppointmentController::class, 'create']);
-Route::post('/user/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+Route::post('/user/appointments/store', [AppointmentController::class, 'store'])->name('appointments.store');
