@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Customer;
+use App\Models\Appointment;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 
@@ -14,16 +16,17 @@ class AppointmentConfirmation extends Mailable
     use Queueable, SerializesModels;
 
     public $customer;
-
+    public $appointment;
     
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($customer)
+    public function __construct(Customer $customer, Appointment $appointment)
     {
         $this->customer = $customer;
+        $this->appointment = $appointment;
     }
 
     
@@ -35,17 +38,14 @@ class AppointmentConfirmation extends Mailable
      */
     public function build()
     {
-        if ($this->customer->appointment) {
-            // access the appointment properties
             return $this->view('emails.appointment_confirmation')
                         ->subject('Appointment Confirmation')
-                        ->from('sender@example.com')
+                        ->from('noreply@boogietime.com')
                         ->with([
-                            'customer_first_name' => $this->customer->first_name,
-                            'customer_last_name' => $this->customer->last_name,
-                            'date' => $this->customer->appointment->date,
-                            'start_time' => $this->customer->appointment->start_time,
-                        ]);
-        } 
+                        'customer_first_name' => $this->customer->first_name,
+                        'customer_last_name' => $this->customer->last_name,
+                        'date' => $this->appointment->date,
+                        'start_time' => $this->appointment->start_time,
+                    ]); 
     }
 }

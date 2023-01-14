@@ -79,10 +79,12 @@ class AppointmentController extends Controller
         $appointment->save();
         
         
-        // Send confirmation email
-        Mail::to($appointment->customer->email)->send(new AppointmentConfirmation($appointment->customer));
-                
         
+        // Send confirmation email
+        Mail::to($appointment->customer->email)->send(new AppointmentConfirmation($customer, $appointment));
+            
+
+
         // Redirect the user to a success page
         return redirect('/user/appointments');
 
