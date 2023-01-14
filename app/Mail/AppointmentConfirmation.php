@@ -37,8 +37,8 @@ class AppointmentConfirmation extends Mailable
                     ->with([
                         'customer_first_name' => $this->customer->first_name,
                         'customer_last_name' => $this->customer->last_name,
-                        'appointment_date' => $this->customer->appointment->date,
-                        'appointment_time' => $this->customer->appointment->start_time
+                        'date' => $this->customer->appointment->date,
+                        'start_time' => $this->customer->appointment->start_time,
                     ]);
     }
 }
