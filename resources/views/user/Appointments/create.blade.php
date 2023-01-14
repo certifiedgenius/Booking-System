@@ -1,3 +1,6 @@
+<!-- CSS file Script -->
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
 <form method="POST" action="{{ route('appointments.store') }}">
     @csrf
     <div class="mb-4">
