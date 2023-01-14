@@ -7,7 +7,10 @@ use App\Models\Customer;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\AppointmentConfirmation;
+
 
 
 class AppointmentController extends Controller
@@ -71,8 +74,14 @@ class AppointmentController extends Controller
             'text' => $request->input('text'),
         ]);
         
+        
         // Save the appointment to the database
         $appointment->save();
+        
+        
+        // Send confirmation email
+        Mail::to($appointment->customer->email)->send(new AppointmentConfirmation($appointment->customer));
+                
         
         // Redirect the user to a success page
         return redirect('/user/appointments');
@@ -184,4 +193,5 @@ class AppointmentController extends Controller
             'appointment' => $appointment,
         ], 200);
     }
+    
 }
