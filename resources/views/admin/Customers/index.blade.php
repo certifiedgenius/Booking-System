@@ -61,6 +61,16 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                
+                                <!--  Delete Successfully Message -->
+                                @if(session()->has('success'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('success') }}
+                                    </div>
+                                @endif
+
+                                
+                                
                             </tbody>
                         </table>
                     </div>

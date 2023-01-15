@@ -95,7 +95,8 @@ class CustomerController extends Controller
     {
         if ($request->isMethod('delete')) {
             $customer->delete();
-            return redirect()->route('customers')->with('success', 'Customer deleted successfully.');
+            session()->flash('success', 'Customer deleted successfully.');
+            return redirect()->route('customers');
         }
 
         return response()->json([
