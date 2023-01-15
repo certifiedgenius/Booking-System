@@ -42,11 +42,22 @@ require __DIR__.'/auth.php';
 // To get the Appointments route in AdminDashboard
 Route::get('/admin/appointments', [AppointmentController::class, 'index'])->name('appointments');
 
+
 // To get the Customers route in AdminDashboard
 Route::get('/admin/customers', [CustomerController::class, 'index'])->name('customers');
 Route::get('/admin/customers/{id}', [CustomerController::class, 'show'])->name('customers.show');
 Route::post('/admin/customers/edit/{id}', [CustomerController::class, 'update'])->name('customers.update');
 Route::delete('/admin/customers/delete/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+
+
+// To get the Barbers route in AdminDashboard
+Route::get('/admin/barbers', [BarberController::class, 'index'])->name('barbers');
+Route::post('/admin/barbers', [BarberController::class, 'store'])->name('barbers.store');
+Route::get('/admin/barbers/{barber}', [BarberController::class, 'show'])->name('barbers.show');
+Route::get('/admin/barbers/{barber}/edit', [BarberController::class, 'edit'])->name('barbers.edit');
+Route::patch('/admin/barbers/{barber}', [BarberController::class, 'update'])->name('barbers.update');
+Route::delete('/admin/barbers/{barber}', [BarberController::class, 'destroy'])->name('barbers.destroy');
+
 
 
 

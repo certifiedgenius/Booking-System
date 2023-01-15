@@ -19,7 +19,7 @@ class BarberController extends Controller
     public function index()
     {
         $barbers = Barber::all();
-        return view('barbers.index', compact('barbers'));
+        return view('admin.barbers.index', compact('barbers'));
     }
 
     
@@ -64,7 +64,7 @@ class BarberController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
 
-        return redirect()->route('barbers.index')->with('success', 'Barber added successfully');
+        return redirect()->route('admin.barbers.index')->with('success', 'Barber added successfully');
     }
 
     
