@@ -38,10 +38,15 @@
             @endif
             
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="shrink-0 flex flex-col items-center">
                     <a href="{{ route('dashboard') }}">
-                    <title style="font-size:30px" class="block h-9 w-auto fill-current text-white" >{{ config('app.name', 'Laravel') }}</title>
+                        <title style="font-size:30px" class="block h-9 w-auto fill-current text-white" >{{ config('app.name', 'Laravel') }}</title>
+                    </a>
+                    
+                    <a href="{{route('appointments')}}" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 my-2">
+                        Book Now
                     </a>
                 </div>
+            </div>
     </body>
 </html>
