@@ -91,9 +91,12 @@ class CustomerController extends Controller
     }
 
     // delete a specific resource from the database.
-    public function destroy(Customer $customer)
+    public function destroy(Request $request, Customer $customer)
     {
-        $customer->delete();
+        if ($request->isMethod('delete')) {
+            $customer->delete();
+            return redirect()->route('customers')->with('success', 'Customer deleted successfully.');
+        }
 
         return response()->json([
             'status' => 'success',

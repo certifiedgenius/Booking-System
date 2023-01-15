@@ -46,7 +46,7 @@ Route::get('/admin/appointments', [AppointmentController::class, 'index'])->name
 Route::get('/admin/customers', [CustomerController::class, 'index'])->name('customers');
 Route::get('/admin/customers/{id}', [CustomerController::class, 'show'])->name('customers.show');
 Route::post('/admin/customers/edit/{id}', [CustomerController::class, 'update'])->name('customers.update');
-Route::post('/admin/customers/delete/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
+Route::delete('/admin/customers/delete/{customer}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 
 
 

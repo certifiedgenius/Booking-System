@@ -1,5 +1,8 @@
 <!-- resources/views/customers/index.blade.php -->
 
+<!-- CSS file Script -->
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
 <x-app-layout>
     
     <x-slot:header>
@@ -18,7 +21,8 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
                                     <th>Actions</th>
@@ -28,18 +32,32 @@
                                 @foreach ($customers as $customer)
                                     <tr>
                                         <td>{{ $customer->id }}</td>
-                                        <td>{{ $customer->name }}</td>
+                                        <td>{{ $customer->first_name }}</td>
+                                        <td>{{ $customer->last_name }}</td>
                                         <td>{{ $customer->email }}</td>
-                                        <td>{{ $customer->phone_number }}</td>
+                                        <td>{{ $customer->phone }}</td>
                                         <td>
-                                            <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-primary btn-sm">View</a>
-                                            <a href="{{ route('customers.show', $customer->id) }}">{{ $customer->name }}</a>
-                                            <a href="{{ route('customers.update', $customer->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-primary btn-sm">
+                                                View
+                                            </a>
+                                            
+                                            <a href="{{ route('customers.show', $customer->id) }}">
+                                                Show
+                                            </a>
+                                            
+                                            <a href="{{ route('customers.update', $customer->id) }}" class="btn btn-warning btn-sm">
+                                                Edit
+                                            </a>
+                                            
                                             <form style="display:inline-block" action="{{ route('customers.destroy', $customer->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    Delete
+                                                </button>
                                             </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
