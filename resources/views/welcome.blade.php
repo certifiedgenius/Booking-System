@@ -9,6 +9,9 @@
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+        <!-- CSS file Script -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
         <!-- style of the font -->
         <style>
             body {
@@ -33,5 +36,12 @@
                     @endauth
                 </div>
             @endif
+            
+                <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard') }}">
+                    <title style="font-size:30px" class="block h-9 w-auto fill-current text-white" >{{ config('app.name', 'Laravel') }}</title>
+                    </a>
+                </div>
     </body>
 </html>
