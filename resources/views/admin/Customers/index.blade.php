@@ -9,15 +9,19 @@
         All Customers
     </x-slot>
 
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        All Customers
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-bordered table-striped table-hover">
+
+                
+                
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover datatable datatable-booking" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -78,5 +82,8 @@
             </div>
         </div>
     </div>
+    </div>
+</div>
+</div>
 
 </x-app-layout>
