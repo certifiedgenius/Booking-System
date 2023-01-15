@@ -9,23 +9,25 @@
     <table class="table table-bordered table-striped table-hover datatable datatable-booking" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th>Customer Name</th>
-          <th>Barber</th>
+          <th>Customer First Name</th>
+          <th>Customer Last Name</th>
+          <th>Barber First Name</th>
+          <th>Barber Last Name</th>
           <th>Date</th>
           <th>Start Time</th>
-          <th>End Time</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($appointments as $appointment)
         <tr>
-          <td>{{ $appointment->customer->name }}</td>
-          <td>{{ $appointment->barber->name }}</td>
+          <td>{{ $appointment->customer->first_name }}</td>
+          <td>{{ $appointment->customer->last_name }}</td>
+          <td>{{ $appointment->barber->first_name }}</td>
+          <td>{{ $appointment->barber->last_name }}</td>
           <td>{{ $appointment->date }}</td>
           <td>{{ $appointment->start_time }}</td>
-          <td>{{ $appointment->end_time }}</td>
-          <td>{{ $appointment->notes }}</td>
+          <td>{{ $appointment->text }}</td>
         </tr>
         @endforeach
       </tbody>
